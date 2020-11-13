@@ -1,30 +1,35 @@
-import resolve from 'rollup-plugin-node-resolve'
-import sourceMaps from 'rollup-plugin-sourcemaps'
-import { camelCase } from 'lodash'
-import typescript from 'rollup-plugin-typescript2'
-import json from 'rollup-plugin-json'
-import commonjs from 'rollup-plugin-commonjs'
+import resolve from "rollup-plugin-node-resolve";
+import sourceMaps from "rollup-plugin-sourcemaps";
+import { camelCase } from "lodash";
+import typescript from "rollup-plugin-typescript2";
+import json from "rollup-plugin-json";
+import commonjs from "rollup-plugin-commonjs";
 
-const pkg = require('./package.json')
+const pkg = require("./package.json");
 
-const libraryName = 'index'
+const libraryName = "index";
 
 export default {
   input: `src/${libraryName}.ts`,
   output: [
-    { file: pkg.main, name: camelCase(libraryName), format: 'umd', sourcemap: true },
-    { file: pkg.module, format: 'es', sourcemap: true },
+    {
+      file: pkg.main,
+      name: camelCase(libraryName),
+      format: "umd",
+      sourcemap: true,
+    },
+    { file: pkg.module, format: "es", sourcemap: true },
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: [],
   watch: {
-    include: 'src/**',
+    include: "src/**",
   },
   plugins: [
     json({
       // All JSON files will be parsed by default,
       // but you can also specifically include/exclude files
-      include: ['src/**'],
+      include: ["src/**"],
 
       // for tree-shaking, properties will be declared as
       // variables, using either `var` or `const`
@@ -32,7 +37,7 @@ export default {
 
       // specify indentation for the generated default export —
       // defaults to '\t'
-      indent: '  ',
+      indent: "  ",
 
       // ignores indent and generates the smallest code
       compact: true, // Default: false
@@ -51,4 +56,4 @@ export default {
     // Resolve source maps to the original source
     sourceMaps(),
   ],
-}
+};
