@@ -1,7 +1,7 @@
 {
   "name": "id-generator",
   "version": "1.0.0",
-  "description": "web storage utils",
+  "description": "ID generator",
   "main": "dist/id-generator.umd.js",
   "module": "dist/id-generator.es5.js",
   "types": "dist/types/index.d.ts",
